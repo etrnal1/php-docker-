@@ -1,13 +1,43 @@
-##PHP docker环境安装
+## Docker部署PHP环境
+* PHP
+* MySQL
+* Nginx
+* Redis
 
+#### 安装docker
+```linux
+# curl -fsSL https://get.docker.com/ | sh
+```
+国内加速
+```linux
+# curl -sSL https://get.daocloud.io/docker | sh
+```
 
-##此包分为两个，下载任意一个即可
- docker-lnmp
+#### clone
+```linux
+# git clone https://github.com/hteen/docker-lnmp.git
+```
 
- fang-lnmp
+#### 安装docker-compose
+```linux
+# curl -L https://github.com/docker/compose/releases/download/1.8.0-rc1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+# chmod +x /usr/local/bin/docker-compose
+```
 
-####第一步安装docker(mac/linux  windows)
+#### 启动
+```linux
+# cd docker-lnmp
+# docker-compose up -d
+Creating dockerlnmp_redis_1
+Creating dockerlnmp_mysql_1
+Creating dockerlnmp_php_1
+Creating dockerlnmp_nginx_1
+#
+```
+启动ok
 
-1.docker 官网下载一键安装包,把相应的包克隆下来
+#### 测试
 
-2.进入目录,执行 docker-compose up,可以完成对镜像的创建
+> * phpinfo : http://localhost/index.php
+> * mysql : http://localhost/mysql.php
+> * redis : http://localhost/redis.php
